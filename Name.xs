@@ -80,5 +80,7 @@ subname(name, sub)
 		mg->mg_flags |= MGf_REFCOUNTED;
 		mg->mg_obj = (SV *) gv;
 	}
+	SvRMAGICAL_on(cv);
+	CvANON_off(cv);
 	CvGV(cv) = gv;
 	PUSHs(sub);
