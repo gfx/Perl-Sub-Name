@@ -47,11 +47,11 @@ use warnings;
 our $VERSION = '0.04';
 
 use base 'Exporter';
-use base 'DynaLoader';
 
 our @EXPORT = qw(subname);
 our @EXPORT_OK = @EXPORT;
 
-bootstrap Sub::Name $VERSION;
+use XSLoader;
+XSLoader::load(__PACKAGE__, $VERSION);
 
 1;
