@@ -64,14 +64,7 @@ subname(name, sub)
 	}
 	gv = (GV *) newSV(0);
 	gv_init(gv, stash, name, s - name, TRUE);
-#ifndef USE_5005THREADS
-	if (CvPADLIST(cv)) {
-		/* cheap way to refcount the gv */
-		av_store((AV *) AvARRAY(CvPADLIST(cv))[0], 0, (SV *) gv);
-	} else
-#endif
 	{
-		/* expensive way to refcount the gv */
 		MAGIC *mg = SvMAGIC(cv);
 		while (mg && mg->mg_virtual != &subname_vtbl)
 			mg = mg->mg_moremagic;
