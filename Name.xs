@@ -83,4 +83,4 @@ subname(name, sub)
 	SvRMAGICAL_on(cv);
 	CvANON_off(cv);
 	CvGV(cv) = gv;
-	PUSHs(sub);
+	XPUSHs(sub);
